@@ -1,6 +1,6 @@
 # Basic_Algorithms
 
-- Add Quicksort with pivot at the end: the code plots an animation to see the intermediate steps.
+- Add Quicksort with pivot at the end.
 ![](Quicksort_N=100.gif)
 
 - Add Merge Sort with intermediate steps:
