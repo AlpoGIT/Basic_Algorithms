@@ -1,46 +1,24 @@
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+c = [50,23,9,18,61,32]
 
-N = 100
-c = list(np.random.randint(0,N,N))
-x = range(N)
-print('initial:',c)
+def partition(seq,low,high):
+    pivot = seq[high]
+    index = low
 
-# quicksort with pivot at end
-def partition(array,low,pivindex):
-    if pivindex - low > 0:
-        pivot = array[pivindex]
-        index = low
-        for i in range(low,pivindex):
-            if array[i] <= pivot:
-                #swap
-                temp = array[index]
-                array[index] = array[i]
-                array[i] = temp
-                index += 1
-  
-        array[pivindex] = array[index]
-        array[index] = pivot
-    return array, index
+    for i in range(low,high):
+        if seq[i]<pivot:
+            temp = seq[index]
+            seq[index] = seq[i]
+            seq[i] = temp
+            index += 1
+    seq[high] = seq[index]
+    seq[index] = pivot
+    return seq, index
 
-def sort(array, low, high):
-    piv = 0
-    if low < high:
-        array, piv = partition(array,low,high)
-        
-        #print('intermediate:', array)
-        plt.clf()
-        plt.bar(x,array)
-        plt.bar(x[piv],array[piv],color='r')
-        plt.pause(0.1)
-        
-        array = sort(array,low,piv-1)
-        array = sort(array,piv+1,high)
-    return array
+def quicksort(seq,low,high):
+    if low<high:
+        seq, piv = partition(seq,low,high)
+        seq = quicksort(seq, low, piv-1)
+        seq = quicksort(seq,piv+1,high)
+    return seq
 
-def quicksort(seq):
-    return sort(seq,0,len(seq)-1)
-
-print('final:',quicksort(c))
-plt.show()
+print(quicksort(c,0,len(c)-1))
