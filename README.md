@@ -1,4 +1,4 @@
-# Basic_Algorithms
+# Basic_Algorithms (naive and pedagogical implementations)
 
 - Add Quicksort with pivot at the end.
 
