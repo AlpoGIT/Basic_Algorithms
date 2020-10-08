@@ -1,0 +1,33 @@
+g = {
+    'S' : {'A':2, 'D':20},
+    'A' : {'E':3},
+    'B' : {'C': 7},
+    'C' : {'F': 5},
+    'D' : {'D' : 0},
+    'E' : {'B' : 1, 'H': 4, 'G' : 6},
+    'F' : {'B' : 0},
+    'G' : {'D' : 2},
+    'H' : {'E' : 2, 'G' : 1}
+    }
+
+def dij(g,source):
+    unseen =  list(g.keys())
+    dist = {key : float('inf') for key in g.keys()}
+    dist[source] = 0
+    prev = {key : '-' for key in g.keys()}
+
+    while unseen != []:
+        current_dist, current_node = sorted((dist[key],key) for key in unseen)[0]
+        unseen.remove(current_node)
+        for neighbour in g[current_node].keys():
+            new_dist = current_dist + g[current_node][neighbour]
+            if new_dist < dist[neighbour]:
+                dist[neighbour] = new_dist
+                prev[neighbour] = current_node
+    #
+    new_format = '{:>5}'*(len(g.keys()))
+    print('\t'+new_format.format(*g.keys()))
+    print('dist\t'+new_format.format(*dist.values()))
+    print('prev\t'+new_format.format(*prev.values()))
+
+dij(g,'S')
