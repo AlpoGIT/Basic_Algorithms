@@ -33,3 +33,10 @@ merged as: [5, 50, 63, 65, 74, 76, 87, 99, 100]
 -------------------------------------------
 final result: [5, 50, 63, 65, 74, 76, 87, 99, 100]
 ```
+- Add Dijkstra's shortest path in a weighted directed graph (the graph is given by a dictionary of dictionaries) from node S to any node in the graph. For example, the shortest path from S to G is given by G <- H <- E <- A <- S.
+
+```
+            S    A    B    C    D    E    F    G    H
+dist        0    2    6   13   12    5   18   10    9
+prev        -    S    E    B    G    A    C    H    E
+```
